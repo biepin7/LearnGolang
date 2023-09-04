@@ -96,3 +96,7 @@ func Hello(name string) string {
 }
 
 ```
+## 07 优雅永不过时：如何设置默认行为
+
+下一个需求是当我们的函数用空字符串调用时，它默认为打印 "Hello, World" 而不是 "Hello, "
+
