@@ -84,3 +84,15 @@ func Hello(name string) string {
 }
 ```
 
+## 06 优雅永不过时：加入常量和重构
+
+```
+package main
+
+const englishHelloPrefix = "Hello, "
+
+func Hello(name string) string {
+	return englishHelloPrefix + name
+}
+
+```
