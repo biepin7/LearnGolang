@@ -100,3 +100,32 @@ func Hello(name string) string {
 
 下一个需求是当我们的函数用空字符串调用时，它默认为打印 "Hello, World" 而不是 "Hello, "
 
+```
+package main
+
+import "testing"
+
+func TestHello(t *testing.T) {
+
+	t.Run("saying hello to people", func(t *testing.T) {
+		got := Hello("Chris")
+		want := "Hello,Chris"
+
+		if got != want {
+			t.Errorf("got '%q' want '%q'", got, want)
+		}
+	})
+
+	t.Run("say 'Hello, World' when an empty string is supplied", func(t *testing.T) {
+		got := Hello("")
+		want := "Hello,World"
+
+		if got != want {
+			t.Errorf("got '%q' want '%q'", got, want)
+		}
+	})
+}
+
+```
+
+注意这里的 参数里 定义了一个函数并使用
