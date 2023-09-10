@@ -129,3 +129,52 @@ func TestHello(t *testing.T) {
 ```
 
 注意这里的 参数里 定义了一个函数并使用
+
+## 08 修改 hello 
+
+```
+package main
+
+const englishHelloPrefix = "Hello,"
+
+func Hello(name string) string {
+
+	if name == "" {
+		name = "World"
+	}
+
+	return englishHelloPrefix + name
+}
+```
+
+## 09 重构 test
+```
+package main
+
+import "testing"
+
+func TestHello(t *testing.T) {
+
+	t.Run("saying hello to people", func(t *testing.T) {
+		got := Hello("Chris")
+		want := "Hello,Chris"
+
+		assertCorrectMessage(t, got, want)
+	})
+
+	t.Run("say 'Hello, World' when an empty string is supplied", func(t *testing.T) {
+		got := Hello("")
+		want := "Hello,World"
+
+		assertCorrectMessage(t, got, want)
+	})
+}
+
+func assertCorrectMessage(t testing.TB, got, want string) {
+	t.Helper()
+	if got != want {
+		t.Errorf("got '%q' want '%q'", got, want)
+	}
+}
+
+```
